@@ -4,6 +4,8 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration.Install;
+using System.Reflection;
 
 namespace KM_Dev_Task_Image_Processing_Service
 {
@@ -12,14 +14,32 @@ namespace KM_Dev_Task_Image_Processing_Service
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main()
+        static void Main(string[] args)
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            //Installation and uninstallation process easier. No need of use of InstallUtil.exe
+            if (Environment.UserInteractive)
             {
-                new Service1()
-            };
-            ServiceBase.Run(ServicesToRun);
+                var parameter = string.Concat(args);
+                switch (parameter)
+                {
+                    case "--install":
+                        ManagedInstallerClass.InstallHelper(new[] { Assembly.GetExecutingAssembly().Location });
+                        break;
+                    case "--uninstall":
+                        ManagedInstallerClass.InstallHelper(new[] { "u", Assembly.GetExecutingAssembly().Location });
+                        break;
+                }
+            }
+            else
+            {
+                ServiceBase[] ServicesToRun;
+                ServicesToRun = new ServiceBase[]
+                {
+                new ImageProcessingService()
+                };
+                ServiceBase.Run(ServicesToRun);
+            }
+            
         }
     }
 }

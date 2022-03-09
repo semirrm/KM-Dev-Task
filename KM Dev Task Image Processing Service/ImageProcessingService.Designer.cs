@@ -1,7 +1,7 @@
 ﻿
 namespace KM_Dev_Task_Image_Processing_Service
 {
-    partial class Service1
+    partial class ImageProcessingService
     {
         /// <summary> 
         /// Required designer variable.

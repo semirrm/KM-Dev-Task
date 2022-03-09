@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="Image Processor App" Height="545" Width="630"
         AllowDrop="True"
-        Drop="ImagePanel_Drop">
+        Drop="ImagePanel_Drop"
+        MinHeight="373" MinWidth="475">
+    
+    <Window.Resources>
+        <local:MultiCheckedToEnabledConverter x:Key="MultiCheckedToEnabledConverter"/>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="22"/>
@@ -24,6 +30,17 @@
             <MenuItem Header="_File" Height="22" Width="33">
                 <MenuItem Header="_Open"
                           Click="Open_Click"/>
+                <MenuItem Header="_Convert"
+                          Click="Convert_Click">
+                    <MenuItem.IsEnabled>
+                        <MultiBinding Converter="{StaticResource MultiCheckedToEnabledConverter}">
+                            <Binding ElementName="HorizontalFlipCheckbox" Path="IsChecked"/>
+                            <Binding ElementName="VerticalFlipCheckbox" Path="IsChecked"/>
+                            <Binding ElementName="GrayScaleCheckbox" Path="IsChecked"/>
+                            <Binding ElementName="EntropyCropCheckbox" Path="IsChecked"/>
+                        </MultiBinding>
+                    </MenuItem.IsEnabled>
+                </MenuItem>
                 <MenuItem Header="_Save"
                           x:Name="SaveButton"
                           Click="Save_Click" 
@@ -52,26 +69,22 @@
             <StackPanel Orientation="Horizontal">
                 <CheckBox Margin="0, 0, 30, 0" 
                           IsEnabled="False"
-                          x:Name="HorizontalFlipCheckbox"
-                          IsChecked="{Binding IsChecked_HorizontalFlip}">
+                          x:Name="HorizontalFlipCheckbox">
                     <TextBlock>Horizontal Flip</TextBlock>
                 </CheckBox>
                 <CheckBox Margin="0, 0, 30, 0" 
                           IsEnabled="False"
-                          x:Name="VerticalFlipCheckbox"
-                          IsChecked="{Binding IsChecked_VerticalFlip}">
+                          x:Name="VerticalFlipCheckbox">
                     <TextBlock>Vertical Flip</TextBlock>
                 </CheckBox>
                 <CheckBox Margin="0, 0, 30, 0" 
                           IsEnabled="False"
-                          x:Name="GrayScaleCheckbox"
-                          IsChecked="{Binding IsChecked_GrayScale}">
+                          x:Name="GrayScaleCheckbox">
                     <TextBlock>Gray Scale</TextBlock>
                 </CheckBox>
                 <CheckBox Margin="0, 0, 30, 0" 
                           IsEnabled="False"
-                          x:Name="EntropyCropCheckbox"
-                          IsChecked="{Binding IsChecked_EntropyCrop}">
+                          x:Name="EntropyCropCheckbox">
                     <TextBlock>Entropy Crop</TextBlock>
                 </CheckBox>
             </StackPanel>
@@ -90,8 +103,16 @@
                 </Grid.ColumnDefinitions>
                 <Button x:Name="ConvertButton"
                     Grid.Column="5"
-                    Content="Convert" 
-                    IsEnabled="False"/>
+                    Content="Convert">
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource MultiCheckedToEnabledConverter}">
+                            <Binding ElementName="HorizontalFlipCheckbox" Path="IsChecked"/>
+                            <Binding ElementName="VerticalFlipCheckbox" Path="IsChecked"/>
+                            <Binding ElementName="GrayScaleCheckbox" Path="IsChecked"/>
+                            <Binding ElementName="EntropyCropCheckbox" Path="IsChecked"/>
+                        </MultiBinding>
+                    </Button.IsEnabled>
+                </Button>
             </Grid>
             
         </DockPanel>

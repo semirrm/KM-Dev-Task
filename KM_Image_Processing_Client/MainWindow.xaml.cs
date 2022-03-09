@@ -20,78 +20,12 @@ namespace KM_Image_Processing_Client
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
-
-        private bool _IsChecked_HorizontalFlip;
-        private bool _IsChecked_VerticalFlip;
-        private bool _IsChecked_GrayScale;
-        private bool _IsChecked_EntropyCrop;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        protected void NotifyPropertyChanged([CallerMemberName] string name = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(name));
-        }
-
-        public bool IsChecked_HorizontalFlip
-        {
-            get { return _IsChecked_HorizontalFlip; }
-            set
-            {
-                if (value == true)
-                    ConvertButton.IsEnabled = true;
-
-                _IsChecked_HorizontalFlip = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public bool IsChecked_VerticalFlip
-        {
-            get { return _IsChecked_VerticalFlip; }
-            set
-            {
-                if (value == true)
-                    ConvertButton.IsEnabled = true;
-
-                _IsChecked_VerticalFlip = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public bool IsChecked_GrayScale
-        {
-            get { return _IsChecked_GrayScale; }
-            set
-            {
-                if (value == true)
-                    ConvertButton.IsEnabled = true;
-
-                _IsChecked_GrayScale = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public bool IsChecked_EntropyCroped
-        {
-            get { return _IsChecked_EntropyCrop; }
-            set
-            {
-                if (value == true)
-                    ConvertButton.IsEnabled = true;
-
-                _IsChecked_EntropyCrop = value;
-                NotifyPropertyChanged();
-            }
         }
 
         private void ImagePanel_Drop(object sender, DragEventArgs e)
@@ -131,6 +65,11 @@ namespace KM_Image_Processing_Client
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Convert_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -7,11 +7,9 @@ namespace KM_Image_Processing_Service
     public interface IImageProcessingService
     {
         [OperationContract]
-        void GetProcessingData(bool? isHorizontalFlip,
+        byte[] ProcessImage(byte[] imgStream, bool? isHorizontalFlip,
                                bool? isVerticalFlip, bool? isGrayScale,
                                bool? isEntropyCrop);
-        [OperationContract]
-        Stream ProcessImage(Stream imgStream);
 
     }
 }

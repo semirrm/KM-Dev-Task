@@ -109,8 +109,9 @@
                     <ColumnDefinition MaxWidth="100"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="ConvertButton"
-                    Grid.Column="5"
-                    Content="Convert">
+                        Grid.Column="5"
+                        Content="Convert"
+                        Click="Convert_Click">
                     <Button.IsEnabled>
                         <!-- Converter checks if any of the checkboxes is checked.
                         If yes then the ConvertButton gets enabled-->

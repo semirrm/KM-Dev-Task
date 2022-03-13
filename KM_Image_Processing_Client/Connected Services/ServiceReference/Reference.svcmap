@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="35110867-9df6-47f7-a4ef-c1e611bd67d2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="458b7443-b06d-414e-acd2-ec36c277d4a0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,9 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/KM_Image_Processing_Service/Service1/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="15f2ff29-8b78-49aa-ac80-12a8e0c014c8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/KM_Image_Processing_Service/Service1/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="66cfba33-7ea1-4636-a792-5f1c5ee8aef8" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/KM_Image_Processing_Service/Service1/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="42b682ef-660e-4126-9a39-284d791ae9ce" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/KM_Image_Processing_Service/Service1/mex" />
-    <MetadataFile FileName="Message.xsd" MetadataType="Schema" ID="18885e7f-129e-46e3-a817-31a49099c932" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/KM_Image_Processing_Service/Service1/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="8f9c401d-2289-4e24-abbe-07a93cf62e07" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/KM_Image_Processing_Service/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="7cc89a35-62eb-4611-a72a-fefe24f2530c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/KM_Image_Processing_Service/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e2a32841-c78c-4d39-8190-4340cd2d6f3f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/KM_Image_Processing_Service/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

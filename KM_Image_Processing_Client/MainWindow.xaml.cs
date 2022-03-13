@@ -1,21 +1,11 @@
-﻿using Microsoft.Win32;
+﻿using KM_Image_Processing_Client.Proxy;
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Drawing;
 
 namespace KM_Image_Processing_Client
 {
@@ -24,15 +14,19 @@ namespace KM_Image_Processing_Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string _imagePath;
+        private string _imagePath { get; set; }
 
-        private bool _changes = true;
+        private bool _changes { get; set; }
+
+        private ServiceProxy _proxy { get; set; }
 
         #region constructor
 
         public MainWindow()
         {
             InitializeComponent();
+            _changes = false;
+            _proxy = new ServiceProxy();
         }
 
         #endregion
@@ -50,8 +44,8 @@ namespace KM_Image_Processing_Client
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                if (files.Length == 1 && 
-                        (files[0].ToLower().Contains(".png") 
+                if (files.Length == 1 &&
+                        (files[0].ToLower().Contains(".png")
                         || files[0].ToLower().Contains(".jpg")
                         || files[0].ToLower().Contains(".gif")
                         || files[0].ToLower().Contains(".jpeg"))) {
@@ -69,9 +63,12 @@ namespace KM_Image_Processing_Client
         {
             if (_changes)
             {
-                if(ShowDoYouWantToSaveDialog() != MessageBoxResult.Cancel) 
+                if (ShowDoYouWantToSaveDialog() != MessageBoxResult.Cancel)
                     ShowOpenFileDialog();
             }
+            else
+                ShowOpenFileDialog();
+
         }
 
         ///<summary>
@@ -79,8 +76,9 @@ namespace KM_Image_Processing_Client
         ///</summary>
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if(_changes)
+            if (_changes)
                 SaveImage(_imagePath, _imagePath);
+            _changes = false;
         }
 
         ///<summary>
@@ -92,8 +90,8 @@ namespace KM_Image_Processing_Client
             sDlg.Title = "Save Image";
 
             string[] path = _imagePath.Split('\\');
-            string dir  = "";
-            for(int i = 0; i < path.Length - 1; i++) 
+            string dir = "";
+            for (int i = 0; i < path.Length - 1; i++)
                 dir += path[i] + "\\";
             sDlg.InitialDirectory = dir;
             sDlg.FileName = path[path.Length - 1];
@@ -102,11 +100,11 @@ namespace KM_Image_Processing_Client
             sDlg.Filter = extention.ToUpper() + " Files (*." + extention + ")|*." + extention;
 
             sDlg.ShowDialog();
-            if (sDlg.FileName != "") 
+            if (sDlg.FileName != "")
             {
                 SaveImage(_imagePath, sDlg.FileName);
             }
-            
+            _changes = false;
         }
 
         ///<summary>
@@ -114,8 +112,8 @@ namespace KM_Image_Processing_Client
         ///</summary>
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            if(_changes)
-                if(ShowDoYouWantToSaveDialog() != MessageBoxResult.Cancel) { 
+            if (_changes)
+                if (ShowDoYouWantToSaveDialog() != MessageBoxResult.Cancel) {
                     Application curApp = Application.Current;
                     curApp.Shutdown();
                 }
@@ -126,12 +124,39 @@ namespace KM_Image_Processing_Client
         ///</summary>
         private void Convert_Click(object sender, RoutedEventArgs e)
         {
+            byte[] imgArray = File.ReadAllBytes(_imagePath); //the image in view instead of the image in path
+            byte[] convImg = _proxy.sendImageProcessingData(imgArray, HorizontalFlipCheckbox.IsChecked,
+                                            VerticalFlipCheckbox.IsChecked, GrayScaleCheckbox.IsChecked,
+                                            EntropyCropCheckbox.IsChecked);
 
+            
+            Image.Source = StreamToImage(convImg);
+            _changes = true;
         }
 
         #endregion
 
         #region Private classes
+
+        
+        private BitmapImage StreamToImage(byte[] imageStream)
+        {
+            MemoryStream stream = new MemoryStream(imageStream);
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.StreamSource = stream;
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.EndInit();
+            bitmap.Freeze();
+
+            return bitmap;
+        }
+
+        private Stream ImageToStream(String path)
+        {
+            MemoryStream ms = new MemoryStream(File.ReadAllBytes(_imagePath));
+            return ms;
+        }
 
         private void SaveImage(String path, String newPath)
         {
@@ -167,6 +192,8 @@ namespace KM_Image_Processing_Client
             HorizontalFlipCheckbox.IsEnabled = true;
             GrayScaleCheckbox.IsEnabled = true;
             EntropyCropCheckbox.IsEnabled = true;
+
+            _changes = false;
         }
 
         private void ShowOpenFileDialog()

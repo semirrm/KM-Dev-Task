@@ -15,17 +15,11 @@ namespace KM_Image_Processing_Client.ServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IImageProcessingService")]
     public interface IImageProcessingService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageProcessingService/GetProcessingData", ReplyAction="http://tempuri.org/IImageProcessingService/GetProcessingDataResponse")]
-        void GetProcessingData(System.Nullable<bool> isHorizontalFlip, System.Nullable<bool> isVerticalFlip, System.Nullable<bool> isGrayScale, System.Nullable<bool> isEntropyCrop);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageProcessingService/GetProcessingData", ReplyAction="http://tempuri.org/IImageProcessingService/GetProcessingDataResponse")]
-        System.Threading.Tasks.Task GetProcessingDataAsync(System.Nullable<bool> isHorizontalFlip, System.Nullable<bool> isVerticalFlip, System.Nullable<bool> isGrayScale, System.Nullable<bool> isEntropyCrop);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageProcessingService/ProcessImage", ReplyAction="http://tempuri.org/IImageProcessingService/ProcessImageResponse")]
+        byte[] ProcessImage(byte[] imgStream, System.Nullable<bool> isHorizontalFlip, System.Nullable<bool> isVerticalFlip, System.Nullable<bool> isGrayScale, System.Nullable<bool> isEntropyCrop);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageProcessingService/ProcessImage", ReplyAction="http://tempuri.org/IImageProcessingService/ProcessImageResponse")]
-        System.IO.Stream ProcessImage(System.IO.Stream imgStream);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IImageProcessingService/ProcessImage", ReplyAction="http://tempuri.org/IImageProcessingService/ProcessImageResponse")]
-        System.Threading.Tasks.Task<System.IO.Stream> ProcessImageAsync(System.IO.Stream imgStream);
+        System.Threading.Tasks.Task<byte[]> ProcessImageAsync(byte[] imgStream, System.Nullable<bool> isHorizontalFlip, System.Nullable<bool> isVerticalFlip, System.Nullable<bool> isGrayScale, System.Nullable<bool> isEntropyCrop);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,20 +49,12 @@ namespace KM_Image_Processing_Client.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public void GetProcessingData(System.Nullable<bool> isHorizontalFlip, System.Nullable<bool> isVerticalFlip, System.Nullable<bool> isGrayScale, System.Nullable<bool> isEntropyCrop) {
-            base.Channel.GetProcessingData(isHorizontalFlip, isVerticalFlip, isGrayScale, isEntropyCrop);
+        public byte[] ProcessImage(byte[] imgStream, System.Nullable<bool> isHorizontalFlip, System.Nullable<bool> isVerticalFlip, System.Nullable<bool> isGrayScale, System.Nullable<bool> isEntropyCrop) {
+            return base.Channel.ProcessImage(imgStream, isHorizontalFlip, isVerticalFlip, isGrayScale, isEntropyCrop);
         }
         
-        public System.Threading.Tasks.Task GetProcessingDataAsync(System.Nullable<bool> isHorizontalFlip, System.Nullable<bool> isVerticalFlip, System.Nullable<bool> isGrayScale, System.Nullable<bool> isEntropyCrop) {
-            return base.Channel.GetProcessingDataAsync(isHorizontalFlip, isVerticalFlip, isGrayScale, isEntropyCrop);
-        }
-        
-        public System.IO.Stream ProcessImage(System.IO.Stream imgStream) {
-            return base.Channel.ProcessImage(imgStream);
-        }
-        
-        public System.Threading.Tasks.Task<System.IO.Stream> ProcessImageAsync(System.IO.Stream imgStream) {
-            return base.Channel.ProcessImageAsync(imgStream);
+        public System.Threading.Tasks.Task<byte[]> ProcessImageAsync(byte[] imgStream, System.Nullable<bool> isHorizontalFlip, System.Nullable<bool> isVerticalFlip, System.Nullable<bool> isGrayScale, System.Nullable<bool> isEntropyCrop) {
+            return base.Channel.ProcessImageAsync(imgStream, isHorizontalFlip, isVerticalFlip, isGrayScale, isEntropyCrop);
         }
     }
 }

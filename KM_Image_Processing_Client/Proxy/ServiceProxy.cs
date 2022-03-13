@@ -15,15 +15,18 @@ namespace KM_Image_Processing_Client.Proxy
 
         public ServiceProxy()
         {
-            _proxy = new ServiceReference.ImageProcessingServiceClient();   
+            _proxy = new ServiceReference.ImageProcessingServiceClient();
         }
 
-        public void sendImageProcessingData(Stream image, bool? isHorizontalFlip,
+        public byte[] sendImageProcessingData(byte[] imageStream, bool? isHorizontalFlip,
                                             bool? isVerticalFlip, bool? isGrayScale,
                                             bool? isEntropyCrop)
         {
-            _proxy.GetImageProcessingData(image, isHorizontalFlip, isVerticalFlip,
-                                          isGrayScale, isEntropyCrop);
+
+            byte[] str = _proxy.ProcessImage(imageStream, isHorizontalFlip, isVerticalFlip,
+                                      isGrayScale, isEntropyCrop);
+            
+            return str;
         }
     }
 }

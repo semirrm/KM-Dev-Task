@@ -143,7 +143,11 @@ namespace KM_Image_Processing_Client
 
         #region Private functions
 
-        
+        /// <summary>
+        /// Converts byte[] into a BitmapImage
+        /// </summary>
+        /// <param name="imageStream">The byte[] that the BitmapImage is converted from.</param>
+        /// <returns>The BitmapImage converted from the byte[].</returns>
         private BitmapImage StreamToImage(byte[] imageStream)
         {
             MemoryStream stream = new MemoryStream(imageStream);
@@ -157,6 +161,11 @@ namespace KM_Image_Processing_Client
             return bitmap;
         }
 
+        /// <summary>
+        /// Converts BitmapImage into a byte[]
+        /// </summary>
+        /// <param name="image">The BitmapImage that the byte[] is converted from.</param>
+        /// <returns>The BitmapImage converted from the byte[].</returns>
         private byte[] ImageToStream(BitmapImage image)
         {
             byte[] data;
@@ -180,7 +189,11 @@ namespace KM_Image_Processing_Client
             return data;
         }
 
-        private void SaveImage(String newPath)
+        /// <summary>
+        /// Saves the image from Image panel to the path.
+        /// </summary>
+        /// <param name="newPath">The path the image is saved to.</param>
+        private void SaveImage(string newPath)
         {
             _imagePath.ToLower();
             BitmapImage img = Image.Source as BitmapImage;
@@ -200,6 +213,10 @@ namespace KM_Image_Processing_Client
             }
         }
 
+        /// <summary>
+        /// Adds the image from a path to the image panel and enables the use of the processing options.
+        /// </summary>
+        /// <param name="newPath">The path to the image to be opened.</param>
         private void AddImageToPanel(string path)
         {
             BitmapImage bitmap = new BitmapImage();
@@ -222,6 +239,9 @@ namespace KM_Image_Processing_Client
             _changes = false;
         }
 
+        /// <summary>
+        /// Opens the file picker. Filters out all the selectable files.
+        /// </summary>
         private void ShowOpenFileDialog()
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -240,6 +260,12 @@ namespace KM_Image_Processing_Client
             }
         }
 
+        /// <summary>
+        /// Shows a MessageBox and asks the user if he wants to save the changes.
+        /// </summary>
+        /// <returns>A MessageBoxResult.Yes, when user clicks the "Yes" button, 
+        /// a MessageBoxResult.No, when the user clicks the "No" button,
+        /// and a MessageBoxResult.Cancel, when the user clicks the "Cancel" button.</returns>
         private MessageBoxResult ShowDoYouWantToSaveDialog()
         {
             MessageBoxResult mbs = MessageBox.Show(this, "Do you want to save the changes?", "Image Processor App", MessageBoxButton.YesNoCancel, MessageBoxImage.Exclamation);
@@ -250,11 +276,6 @@ namespace KM_Image_Processing_Client
             return mbs;
         }
 
-        private BitmapImage initBitmap(string path)
-        {
-            
-            return bitmap;
-        }
         #endregion
     }
 }

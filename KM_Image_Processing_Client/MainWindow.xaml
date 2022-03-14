@@ -9,12 +9,13 @@
         AllowDrop="True"
         Drop="ImagePanel_Drop"
         MinHeight="373" MinWidth="475"
-        WindowStartupLocation="CenterScreen">
-    
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
+
     <Window.Resources>
         <local:MultiCheckedToEnabledConverter x:Key="MultiCheckedToEnabledConverter"/>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="22"/>

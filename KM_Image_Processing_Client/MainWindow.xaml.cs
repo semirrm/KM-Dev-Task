@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Drawing;
+using System.ComponentModel;
 
 namespace KM_Image_Processing_Client
 {
@@ -116,11 +117,7 @@ namespace KM_Image_Processing_Client
         ///</summary>
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            if (_changes)
-                if (ShowDoYouWantToSaveDialog() != MessageBoxResult.Cancel) {
-                    Application curApp = Application.Current;
-                    curApp.Shutdown();
-                }
+            this.Close();
         }
 
         ///<summary>
@@ -137,6 +134,12 @@ namespace KM_Image_Processing_Client
             
             Image.Source = StreamToImage(convImg);
             _changes = true;
+
+            //Unchecks the checkboxes
+            VerticalFlipCheckbox.IsChecked = false;
+            HorizontalFlipCheckbox.IsChecked = false;
+            GrayScaleCheckbox.IsChecked = false;
+            EntropyCropCheckbox.IsChecked = false;
         }
 
         ///<summary>
@@ -147,6 +150,23 @@ namespace KM_Image_Processing_Client
             AboutWindow aboutWindow = new AboutWindow();
             aboutWindow.Owner = Window.GetWindow(this);
             aboutWindow.Show();
+        }
+        
+
+
+        /// <summary>
+        /// Handles the closing of the application. Asks if you want to save the changes.
+        /// </summary>
+        protected void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (_changes)
+                if (ShowDoYouWantToSaveDialog() != MessageBoxResult.Cancel)
+                {
+                    Application curApp = Application.Current;
+                    curApp.Shutdown();
+                }
+                else
+                    e.Cancel = true;
         }
 
         #endregion

@@ -1,11 +1,7 @@
 ﻿using ImageProcessor;
 using ImageProcessor.Imaging.Filters.Photo;
 using System;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Net;
-using System.Windows;
 
 namespace KM_Image_Processing_Service
 {

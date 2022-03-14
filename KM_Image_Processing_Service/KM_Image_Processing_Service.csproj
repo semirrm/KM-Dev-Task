@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IImageProcessingService.cs" />
-    <Compile Include="ImageSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ImageProcessingService.cs" />
   </ItemGroup>

@@ -56,6 +56,10 @@
                 <MenuItem Header="_Exit"
                           Click="Exit_Click"/>
             </MenuItem>
+            <MenuItem Header="_Info" Height="22" Width="33">
+                <MenuItem Header="_About"
+                          Click="About_Click"/>
+            </MenuItem>
         </Menu>
         
         <!-- Image Panel -->

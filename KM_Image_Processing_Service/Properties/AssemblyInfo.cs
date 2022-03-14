@@ -5,11 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KM_Image_Processing_Service")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("KM Image Processing Service")]
+[assembly: AssemblyDescription("This service was created for my Konica Minolta Software Developer job interview.\n" +
+    "This service receives the data from the client and processes the transfered image,\n" +
+    "accordingly to the options chosen in the client side of the application.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KM_Image_Processing_Service")]
+[assembly: AssemblyCompany("Semir Kadhim")]
+[assembly: AssemblyProduct("KM_Image_Processing")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Drawing;
-using System.Windows.Media;
 
 namespace KM_Image_Processing_Client
 {
@@ -15,6 +14,7 @@ namespace KM_Image_Processing_Client
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         private string _imagePath { get; set; }
 
         private bool _changes { get; set; }
@@ -137,6 +137,16 @@ namespace KM_Image_Processing_Client
             
             Image.Source = StreamToImage(convImg);
             _changes = true;
+        }
+
+        ///<summary>
+        /// Handles the clicking on the MenuItem and Button - Convert.
+        ///</summary>
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.Owner = Window.GetWindow(this);
+            aboutWindow.Show();
         }
 
         #endregion
@@ -274,6 +284,12 @@ namespace KM_Image_Processing_Client
                 SaveImage(_imagePath);
             }
             return mbs;
+        }
+
+        
+        private void something()
+        {
+            
         }
 
         #endregion

@@ -21,10 +21,14 @@ namespace KM_Image_Processing_Service
                     imageFactory.Load(imgStream);
                     if (isHorizontalFlip == true)
                     {
-                        if(isVerticalFlip == false)
+                        WriteToFile("Image flipped horizontally");
+                        if (isVerticalFlip == false)
                             imageFactory.Flip(false);
                         else
+                        {
                             imageFactory.Flip(true);
+                            WriteToFile("Image flipped vertically");
+                        }
                     
                     }
                     else
@@ -32,17 +36,22 @@ namespace KM_Image_Processing_Service
                         if (isVerticalFlip == true) { 
                             imageFactory.Flip(true);
                             imageFactory.Flip(false);
+                            WriteToFile("Image flipped vertically");
                         }
                     }
 
-                    if (isGrayScale == true)
+                    if (isGrayScale == true) { 
                         imageFactory.Filter(MatrixFilters.GreyScale);
-                    if (isEntropyCrop == true)
+                        WriteToFile("Grey Scale filter applied to image.");
+                    }
+                    if (isEntropyCrop == true) { 
                         imageFactory.EntropyCrop();
+                        WriteToFile("Entropy crop applied to image.");
+                    }
                     imageFactory.Save(convertedImageStream);
                 }
             }
-
+            WriteToFile("Processed image sent to client.");
             return convertedImageStream.ToArray();
         }
 
@@ -54,7 +63,6 @@ namespace KM_Image_Processing_Service
             }  
             string filepath = AppDomain.CurrentDomain.BaseDirectory + "\\Logs\\ServiceLog_" + DateTime.Now.Date.ToShortDateString().Replace('/', '_') + ".txt";  
             if (!File.Exists(filepath)) {  
-                // Create a file to write to.   
                 using(StreamWriter sw = File.CreateText(filepath)) {  
                     sw.WriteLine(Message);  
                 }  

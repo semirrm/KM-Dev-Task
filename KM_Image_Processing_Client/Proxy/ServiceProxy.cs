@@ -11,11 +11,12 @@ namespace KM_Image_Processing_Client.Proxy
 {
     class ServiceProxy
     {
-        private ServiceReference.ImageProcessingServiceClient _proxy;
+
+        private ServiceReference1.ImageProcessingServiceClient _proxy;
 
         public ServiceProxy()
         {
-            _proxy = new ServiceReference.ImageProcessingServiceClient();
+            _proxy = new ServiceReference1.ImageProcessingServiceClient();
         }
 
         public byte[] sendImageProcessingData(byte[] imageStream, bool? isHorizontalFlip,

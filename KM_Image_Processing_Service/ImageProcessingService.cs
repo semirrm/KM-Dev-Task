@@ -53,11 +53,11 @@ namespace KM_Image_Processing_Service
 
         private void WriteToFile(string Message)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + "\\Logs";  
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\KMImageProcessingService\\Logs";  
             if (!Directory.Exists(path)) {  
                 Directory.CreateDirectory(path);  
             }  
-            string filepath = AppDomain.CurrentDomain.BaseDirectory + "\\Logs\\ServiceLog_" + DateTime.Now.Date.ToShortDateString().Replace('/', '_') + ".txt";  
+            string filepath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\KMImageProcessingService\\Logs\\ServiceLog_" + DateTime.Now.Date.ToShortDateString().Replace('/', '_') + ".txt";  
             if (!File.Exists(filepath)) {  
                 using(StreamWriter sw = File.CreateText(filepath)) {  
                     sw.WriteLine(Message);  

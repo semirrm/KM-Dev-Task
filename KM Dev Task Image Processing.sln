@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KM_Image_Processing_Client"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KM_Image_Processing_Service", "KM_Image_Processing_Service\KM_Image_Processing_Service.csproj", "{D441505C-FF40-4C45-8230-4E6A014F3BCF}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "KM_Image_Processing_Installer", "KM_Image_Processing_Installer\KM_Image_Processing_Installer.vdproj", "{E980FF9B-7101-4343-B048-93EFDF2CDC88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,8 @@ Global
 		{D441505C-FF40-4C45-8230-4E6A014F3BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D441505C-FF40-4C45-8230-4E6A014F3BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D441505C-FF40-4C45-8230-4E6A014F3BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E980FF9B-7101-4343-B048-93EFDF2CDC88}.Debug|Any CPU.ActiveCfg = Debug
+		{E980FF9B-7101-4343-B048-93EFDF2CDC88}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

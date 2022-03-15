@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 
 namespace KM_Image_Processing_Service
 {

@@ -22,7 +22,7 @@ namespace KM_Image_Processing_Client
 
         private ServiceProxy _proxy { get; set; }
 
-        #region constructor
+        #region Constructor
 
         public MainWindow()
         {

@@ -11,7 +11,7 @@ namespace KM_Image_Processing_Service
         {
             MemoryStream convertedImageStream;
 
-            using(convertedImageStream = new MemoryStream(imgStream)) { 
+            using(convertedImageStream = new MemoryStream()) { 
                 using (ImageFactory imageFactory = new ImageFactory(preserveExifData: true))
                 {
                     imageFactory.Load(imgStream);
@@ -44,6 +44,7 @@ namespace KM_Image_Processing_Service
                         imageFactory.EntropyCrop();
                         WriteToFile("Entropy crop applied to image.");
                     }
+
                     imageFactory.Save(convertedImageStream);
                 }
             }

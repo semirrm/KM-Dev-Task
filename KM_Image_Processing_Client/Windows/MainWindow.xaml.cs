@@ -43,16 +43,20 @@ namespace KM_Image_Processing_Client
         ///</summary>
         private void ImagePanel_Drop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                if (files.Length == 1 &&
-                        (files[0].ToLower().Contains(".png")
-                        || files[0].ToLower().Contains(".jpg")
-                        || files[0].ToLower().Contains(".gif")
-                        || files[0].ToLower().Contains(".jpeg"))) {
-                    _imagePath = files[0];
-                    AddImageToPanel(_imagePath);
+            if (_changes && ShowDoYouWantToSaveDialog() == MessageBoxResult.Cancel) { }
+            else { 
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                {
+                    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                    if (files.Length == 1 &&
+                            (files[0].ToLower().Contains(".png")
+                            || files[0].ToLower().Contains(".jpg")
+                            || files[0].ToLower().Contains(".gif")
+                            || files[0].ToLower().Contains(".jpeg")))
+                    {
+                        _imagePath = files[0];
+                        AddImageToPanel(_imagePath);
+                    }
                 }
             }
         }
@@ -266,6 +270,8 @@ namespace KM_Image_Processing_Client
             GrayScaleCheckbox.IsEnabled = true;
             EntropyCropCheckbox.IsEnabled = true;
 
+            string[] pathArr = path.Split('\\');
+            this.Title = pathArr[pathArr.Length - 1] + " --- Image Processor App";
             _changes = false;
         }
 
@@ -304,12 +310,6 @@ namespace KM_Image_Processing_Client
                 SaveImage(_imagePath);
             }
             return mbs;
-        }
-
-        
-        private void something()
-        {
-            
         }
 
         #endregion

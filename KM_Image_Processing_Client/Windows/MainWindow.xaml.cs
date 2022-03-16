@@ -37,29 +37,28 @@ namespace KM_Image_Processing_Client
 
         ///<summary>
         /// Handling of the drag and drop functionality.
-        /// 
         /// <para>Constaints: Only a single .png/.jpg/.gif/.jpeg will be accepted. 
         /// All other file extentions and multiple files drop will be ignored.</para>
         ///</summary>
         private void ImagePanel_Drop(object sender, DragEventArgs e)
         {
-            if (_changes && ShowDoYouWantToSaveDialog() == MessageBoxResult.Cancel) { }
-            else { 
-                if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (_changes)
+            {
+                MessageBoxResult result = ShowDoYouWantToSaveDialog();
+                if(result != MessageBoxResult.Cancel)
                 {
-                    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                    if (files.Length == 1 &&
-                            (files[0].ToLower().Contains(".png")
-                            || files[0].ToLower().Contains(".jpg")
-                            || files[0].ToLower().Contains(".gif")
-                            || files[0].ToLower().Contains(".jpeg")))
-                    {
-                        _imagePath = files[0];
-                        AddImageToPanel(_imagePath);
-                    }
+                    if(result == MessageBoxResult.Yes)
+                        SaveImage(_imagePath);
+                    AddDropedImage(e);
                 }
             }
+            else
+            {
+                AddDropedImage(e);
+            }
         }
+
+        
 
 
         ///<summary>
@@ -310,6 +309,29 @@ namespace KM_Image_Processing_Client
                 SaveImage(_imagePath);
             }
             return mbs;
+        }
+
+        /// <summary>
+        /// Adds a dropped image to the ImagePanel.
+        /// <para>Constaints: Only a single .png/.jpg/.gif/.jpeg will be accepted. 
+        /// All other file extentions and multiple files drop will be ignored.</para>
+        /// </summary>
+        /// <param name="e">The DragEventArgs from the event handler.</param>
+        private void AddDropedImage(DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                if (files.Length == 1 &&
+                        (files[0].ToLower().Contains(".png")
+                        || files[0].ToLower().Contains(".jpg")
+                        || files[0].ToLower().Contains(".gif")
+                        || files[0].ToLower().Contains(".jpeg")))
+                {
+                    _imagePath = files[0];
+                    AddImageToPanel(_imagePath);
+                }
+            }
         }
 
         #endregion

@@ -34,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7A624B006591F1BBDF3E6E09E71D25B9"
+        "OwnerKey" = "8:_9090ED80498448798D618929B1FF79CD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9090ED80498448798D618929B1FF79CD"
+        "OwnerKey" = "8:_7A624B006591F1BBDF3E6E09E71D25B9"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -61,6 +61,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -77,6 +93,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -214,7 +246,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:KM Image Processing"
         "ProductCode" = "8:{7B3C8D7A-677B-4759-97F6-DA4746CF92FF}"
-        "PackageCode" = "8:{80CEF8B0-CBD9-44D9-871C-6CE198266A89}"
+        "PackageCode" = "8:{15CCA0D5-497E-4D11-967C-4AAF5581111B}"
         "UpgradeCode" = "8:{B498E0A2-9BB1-44A0-AFE6-158C9003798F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -334,9 +366,9 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_22E5807AD60D47819E1F03D6490E4536"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0BFB734DC1F6415581EA9A447469DCF0"
             {
-            "Name" = "8:KM Image Processing Client"
+            "Name" = "8:KM Image Processing"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -344,7 +376,7 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_9090ED80498448798D618929B1FF79CD"
             "Folder" = "8:_080EB806EA4B41E294583773649E897E"
-            "WorkingFolder" = "8:_080EB806EA4B41E294583773649E897E"
+            "WorkingFolder" = "8:_612DB5DB254C49E1A5822213F49F6035"
             "Icon" = "8:_F1E15E0AC7F349A697525028729D9D95"
             "Feature" = "8:"
             }
@@ -749,7 +781,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9090ED80498448798D618929B1FF79CD"
             {
-            "SourcePath" = "8:..\\KM_Image_Processing_Client\\obj\\Release\\KM_Image_Processing_Client.exe"
+            "SourcePath" = "8:..\\KM_Image_Processing_Client\\obj\\Debug\\KM_Image_Processing_Client.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_612DB5DB254C49E1A5822213F49F6035"
